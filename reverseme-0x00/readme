@@ -1,0 +1,24 @@
+Di dalam file N3-Hard-Reversing.n3 terdapat informasi Nama dan Tanggal Lahir
+yang dienkripsi. Anda dapat menggunakan hexeditor untuk mengedi  file .n3
+tersebut.
+
+File tersebut disusun per-blok dimana tiap bloknya mempunyai format:
+
+  0..3  : Start (4 byte)
+  4..7  : Nomor blok (4 byte)
+  8..11 : Panjang isi blok (4 byte)
+  12..n : Isi dari blok (n byte)
+
+Masing masing blok mempunya fungsi sendiri dan ada pengecekan hash dari tiap
+bloknya. Di antara blok tersebut, ada informasi data yang dienkripsi beserta
+key nya. Informasi Nama dan Tanggal Lahirnya dienkripsi menggunakan Rijndael256
+dan key untuk enkripsi/dekripsi juga dienkripsi menggunakan RSA256.
+
+Untuk flag kedua, key Rijndaelnya "N3 - Cara Pintas yang dianggap Pantas sejak 2003"
+(gunakan fasilitas Rijndael.GenerateKey() di Delphi untuk mendapat format binarynya).
+
+Setelah mendapatkan format binarynya, key ini HARUS dienkripsi menggunakan RSA yang
+public keynya terdapat pada file executable tersebut. Karna enkripsi RSA harus
+menggunakan PRIVATE KEY, dan tidak ada informasi mengenai PRIVATE KEY, maka PUBLIC
+KEY RSA yang ada di executable harus di-faktorisasi untuk mendapatkan PRIVATE KEYnya.
+
